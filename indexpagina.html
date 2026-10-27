@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Principal</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #9bc4b4;
+            margin: 0;
+            padding: 40px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        h2 {
+            color: #333;
+            margin-top: 40px;
+        }
+
+        .contenedor {
+            display: grid;
+            grid-template-columns: repeat(2, 200px);
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        h2 + .contenedor {
+            margin-top: 15px;
+        }
+
+        .boton {
+            background-color: #6080ab;
+            color: white;
+            padding: 20px;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            display: block;
+        }
+
+        .boton:hover {
+            background-color: #b879b1;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Página Principal</h1>
+    <p>Selecciona la guía que deseas consultar</p>
+
+    <h2>Guía 3</h2>
+    <div class="contenedor">
+        <a href="./20255046_Guia3/RecursosGuia3/ejemplo1/index.html" class="boton">Ejemplo 1: Maravillas del Mundo</a>
+        <a href="./20255046_Guia3/RecursosGuia3/ejemplo2/index.html" class="boton">Ejemplo 2: Menú lateral</a>
+        <a href="./20255046_Guia3/RecursosGuia3/ejercicio/ejercicio.html" class="boton">Ejercicio: Resultado 1</a>
+        <a href="./20255046_Guia3/Reto IA/Turismo2.mp4" class="boton">Reto IA: Turismo en El Salvador</a>
+    </div>
+</body>
+</html>

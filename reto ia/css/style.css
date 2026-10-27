@@ -1,0 +1,485 @@
+:root {
+  /* Colors */
+  --color-forest-stage: #0d542b;
+  --color-lime-sprout: #b9ff78;
+  --color-ember-coral: #f54320;
+  --color-coral-whisper: #ffe3e3;
+  --color-cream-paper: #fcf7ed;
+  --color-true-black: #000000;
+  --color-midnight-ink: #1c1917;
+  --color-stone: #44403b;
+  --color-slate: #292524;
+  --color-ash: #d6d3d1;
+  --color-fog: #e5e7eb;
+  --color-pure-white: #ffffff;
+  --color-moss: #008236;
+
+  /* Typography — Font Families */
+  --font-gt-alpina-condensed: 'GT Alpina Condensed', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-gt-america-standard: 'GT America Standard', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-gt-america-extended: 'GT America Extended', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-gt-america-condensed: 'GT America Condensed', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-intervariable: 'InterVariable', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* Typography — Scale */
+  --text-caption: 10px;
+  --leading-caption: 1;
+  --tracking-caption: 0px;
+  --text-body-sm: 14px;
+  --leading-body-sm: 1.43;
+  --tracking-body-sm: 0px;
+  --text-body: 16px;
+  --leading-body: 1.5;
+  --tracking-body: -0.007px;
+  --text-subheading: 20px;
+  --leading-subheading: 1.5;
+  --tracking-subheading: -0.14px;
+  --text-heading-sm: 24px;
+  --leading-heading-sm: 1.33;
+  --tracking-heading-sm: -0.17px;
+  --text-heading: 30px;
+  --leading-heading: 1.38;
+  --tracking-heading: -0.21px;
+  --text-heading-lg: 38px;
+  --leading-heading-lg: 1.38;
+  --tracking-heading-lg: -0.95px;
+  --text-display: 96px;
+  --leading-display: 1.08;
+  --tracking-display: 0px;
+
+  /* Typography — Weights */
+  --font-weight-regular: 400;
+  --font-weight-bold: 700;
+
+  /* Spacing */
+  --spacing-unit: 8px;
+  --spacing-8: 8px;
+  --spacing-16: 16px;
+  --spacing-24: 24px;
+  --spacing-32: 32px;
+  --spacing-40: 40px;
+  --spacing-48: 48px;
+  --spacing-64: 64px;
+  --spacing-104: 104px;
+
+  /* Layout */
+  --page-max-width: 1200px;
+  --section-gap: 64px;
+  --card-padding: 24px;
+  --element-gap: 16px;
+
+  /* Border Radius */
+  --radius-lg: 8px;
+  --radius-3xl: 24px;
+
+  /* Named Radii */
+  --radius-cards: 8px;
+  --radius-pills: 9999px;
+  --radius-buttons: 8px;
+  --radius-productframes: 24px;
+
+  /* Surfaces */
+  --surface-forest-stage: #0d542b;
+  --surface-cream-paper: #fcf7ed;
+  --surface-pure-white-card: #ffffff;
+  --surface-coral-whisper: #ffe3e3;
+}
+
+/* ===== Base ===== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-intervariable);
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  letter-spacing: var(--tracking-body);
+  color: var(--color-midnight-ink);
+  background-color: var(--surface-cream-paper);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: var(--color-forest-stage);
+}
+
+a:hover,
+a:focus-visible {
+  color: var(--color-ember-coral);
+}
+
+h1,
+h2,
+h3 {
+  margin: 0 0 var(--spacing-8);
+  font-family: var(--font-gt-alpina-condensed);
+  line-height: var(--leading-heading);
+  color: var(--color-forest-stage);
+}
+
+h2 {
+  font-size: var(--text-heading);
+}
+
+h3 {
+  font-size: var(--text-subheading);
+}
+
+p {
+  margin: 0 0 var(--spacing-16);
+}
+
+/* =========================================================
+   LAYOUT PRINCIPAL CON CSS GRID
+   ========================================================= */
+.pagina {
+  /* Convierte el contenedor en una cuadrícula (Grid container) */
+  display: grid;
+
+  /* Dos columnas: la primera ocupa el espacio sobrante (1fr, con minmax(0, 1fr)
+     para que no desborde) y la segunda mide 320px (barra lateral) */
+  grid-template-columns: minmax(0, 1fr) 320px;
+
+  /* Alto de cada fila: auto se ajusta al contenido; 1fr en la fila del contenido
+     reparte el espacio restante para empujar el pie hacia abajo */
+  grid-template-rows: auto auto auto 1fr auto;
+
+  /* Dibuja el mapa de la página: cada palabra es el nombre de un área.
+     Repetir un nombre hace que ese elemento ocupe varias celdas */
+  grid-template-areas:
+    "encabezado encabezado"
+    "menu       menu"
+    "hero       hero"
+    "contenido  lateral"
+    "pie        pie";
+
+  /* Separación entre filas y columnas de la cuadrícula */
+  gap: var(--spacing-24);
+
+  max-width: var(--page-max-width);
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: var(--spacing-24);
+}
+
+/* grid-area asigna cada elemento (Grid item) a un área del mapa anterior */
+.encabezado { grid-area: encabezado; }
+.menu       { grid-area: menu; }
+.hero       { grid-area: hero; }
+.contenido  { grid-area: contenido; }
+.lateral    { grid-area: lateral; }
+.pie        { grid-area: pie; }
+
+/* Variante de las páginas extra: una sola columna, sin barra lateral.
+   El selector doble (.pagina.pagina--simple) tiene más peso y prevalece */
+.pagina.pagina--simple {
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto auto 1fr auto;
+  grid-template-areas:
+    "encabezado"
+    "menu"
+    "contenido"
+    "pie";
+}
+
+/* ===== Encabezado ===== */
+.encabezado {
+  padding: var(--spacing-32) var(--spacing-40);
+  color: var(--color-pure-white);
+  background-color: var(--surface-forest-stage);
+  border-radius: var(--radius-productframes);
+}
+
+.marca {
+  font-family: var(--font-gt-alpina-condensed);
+  font-size: var(--text-heading-lg);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--tracking-heading-lg);
+  line-height: var(--leading-heading-lg);
+  text-decoration: none;
+  color: var(--color-pure-white);
+}
+
+.marca:hover,
+.marca:focus-visible {
+  color: var(--color-lime-sprout);
+}
+
+.lema {
+  margin: var(--spacing-8) 0 0;
+  color: var(--color-lime-sprout);
+}
+
+/* ===== Menú (Flexbox solo dentro del componente) ===== */
+.menu ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-8);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.menu a {
+  display: block;
+  padding: var(--spacing-8) var(--spacing-24);
+  font-size: var(--text-body-sm);
+  font-weight: var(--font-weight-bold);
+  text-decoration: none;
+  color: var(--color-forest-stage);
+  background-color: var(--surface-pure-white-card);
+  border: 1px solid var(--color-fog);
+  border-radius: var(--radius-pills);
+}
+
+.menu a:hover,
+.menu a:focus-visible {
+  color: var(--color-forest-stage);
+  background-color: var(--color-lime-sprout);
+}
+
+.menu a[aria-current="page"] {
+  color: var(--color-pure-white);
+  background-color: var(--color-forest-stage);
+  border-color: var(--color-forest-stage);
+}
+
+/* ===== Hero ===== */
+.hero {
+  padding: var(--spacing-64) var(--spacing-40);
+  color: var(--color-pure-white);
+  background: linear-gradient(135deg, var(--color-forest-stage), var(--color-moss));
+  border-radius: var(--radius-productframes);
+}
+
+.hero h1 {
+  max-width: 14ch;
+  margin-bottom: var(--spacing-16);
+  font-size: clamp(48px, 9vw, var(--text-display));
+  line-height: var(--leading-display);
+  color: var(--color-pure-white);
+}
+
+.hero p {
+  max-width: 60ch;
+}
+
+.etiqueta {
+  display: inline-block;
+  margin-bottom: var(--spacing-16);
+  padding: 4px var(--spacing-16);
+  font-size: var(--text-body-sm);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  color: var(--color-forest-stage);
+  background-color: var(--color-lime-sprout);
+  border-radius: var(--radius-pills);
+}
+
+/* ===== Botones ===== */
+.boton {
+  display: inline-block;
+  padding: var(--spacing-16) var(--spacing-32);
+  font-weight: var(--font-weight-bold);
+  text-decoration: none;
+  color: var(--color-forest-stage);
+  background-color: var(--color-lime-sprout);
+  border-radius: var(--radius-buttons);
+}
+
+.boton:hover,
+.boton:focus-visible {
+  color: var(--color-pure-white);
+  background-color: var(--color-ember-coral);
+}
+
+.boton-secundario {
+  color: var(--color-pure-white);
+  background-color: var(--color-forest-stage);
+}
+
+/* ===== Contenido principal ===== */
+.titulo-pagina {
+  font-size: var(--text-heading-lg);
+  line-height: var(--leading-heading-lg);
+  letter-spacing: var(--tracking-heading-lg);
+}
+
+.intro {
+  max-width: 70ch;
+  margin-bottom: var(--spacing-32);
+  color: var(--color-stone);
+}
+
+/* ===== Galería de tarjetas (Grid anidado) ===== */
+.galeria {
+  display: grid;
+
+  /* repeat + auto-fill + minmax: crea tantas columnas de al menos 240px
+     como quepan; cada una crece por igual (1fr) para llenar el ancho */
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+
+  gap: var(--element-gap);
+}
+
+.tarjeta {
+  overflow: hidden;
+  background-color: var(--surface-pure-white-card);
+  border: 1px solid var(--color-fog);
+  border-radius: var(--radius-cards);
+}
+
+.tarjeta img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  background-color: var(--color-ash);
+}
+
+.tarjeta-cuerpo {
+  padding: var(--card-padding);
+}
+
+.ubicacion {
+  margin-bottom: var(--spacing-8);
+  font-size: var(--text-body-sm);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  color: var(--color-ember-coral);
+}
+
+.tarjeta-cuerpo a {
+  font-weight: var(--font-weight-bold);
+}
+
+.galeria-datos {
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+.tarjeta-dato {
+  border-top: 4px solid var(--color-lime-sprout);
+}
+
+/* ===== Barra lateral ===== */
+.lateral {
+  align-self: start;
+  padding: var(--card-padding);
+  background-color: var(--surface-coral-whisper);
+  border-radius: var(--radius-productframes);
+}
+
+.lateral section {
+  margin-bottom: var(--spacing-16);
+}
+
+.lateral p {
+  font-size: var(--text-body-sm);
+  line-height: var(--leading-body-sm);
+  color: var(--color-stone);
+}
+
+/* ===== Página de destinos ===== */
+.detalle-lista {
+  display: grid;
+  gap: var(--spacing-32);
+}
+
+.detalle {
+  display: grid;
+
+  /* Dos columnas: imagen fija de 320px y texto flexible */
+  grid-template-columns: 320px minmax(0, 1fr);
+  gap: var(--spacing-24);
+  align-items: start;
+  padding: var(--card-padding);
+  background-color: var(--surface-pure-white-card);
+  border: 1px solid var(--color-fog);
+  border-radius: var(--radius-cards);
+  scroll-margin-top: var(--spacing-24);
+}
+
+.detalle img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  background-color: var(--color-ash);
+  border-radius: var(--radius-cards);
+}
+
+.detalle ul {
+  margin: 0;
+  padding-left: var(--spacing-24);
+  color: var(--color-stone);
+}
+
+/* ===== Pie de página ===== */
+.pie {
+  display: grid;
+
+  /* Dos columnas iguales dentro del pie: contacto y créditos */
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--spacing-24);
+  align-items: center;
+  padding: var(--spacing-32) var(--spacing-40);
+  color: var(--color-pure-white);
+  background-color: var(--surface-forest-stage);
+  border-radius: var(--radius-productframes);
+}
+
+.pie h2 {
+  color: var(--color-lime-sprout);
+}
+
+.pie a {
+  color: var(--color-lime-sprout);
+}
+
+.pie a:hover,
+.pie a:focus-visible {
+  color: var(--color-pure-white);
+}
+
+.pie p {
+  margin: 0;
+}
+
+/* =========================================================
+   RESPONSIVE: pantallas angostas (menos de 768px)
+   ========================================================= */
+@media (max-width: 768px) {
+  .pagina {
+    /* Una sola columna */
+    grid-template-columns: minmax(0, 1fr);
+
+    /* Se redefine el mapa: la barra lateral pasa debajo del contenido */
+    grid-template-rows: auto;
+    grid-template-areas:
+      "encabezado"
+      "menu"
+      "hero"
+      "contenido"
+      "lateral"
+      "pie";
+    padding: var(--spacing-16);
+  }
+
+  .encabezado,
+  .hero,
+  .pie {
+    padding: var(--spacing-24);
+  }
+
+  .detalle {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .pie {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
