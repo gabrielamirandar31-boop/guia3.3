@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Accede a los ejemplos y ejercicios de la guía 3.">
     <title>Página Principal</title>
 
     <style>
@@ -11,58 +12,57 @@
             text-align: center;
             background-color: #9bc4b4;
             margin: 0;
-            padding: 40px;
+            padding: 40px 20px;
         }
 
-        h1 {
+        h1,
+        h2 {
             color: #333;
         }
 
         h2 {
-            color: #333;
             margin-top: 40px;
         }
 
         .contenedor {
             display: grid;
-            grid-template-columns: repeat(2, 200px);
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
             justify-content: center;
-            margin-top: 30px;
-        }
-
-        h2 + .contenedor {
-            margin-top: 15px;
+            width: min(100%, 640px);
+            margin: 15px auto 0;
         }
 
         .boton {
+            display: block;
+            padding: 20px;
+            border-radius: 10px;
             background-color: #6080ab;
             color: white;
-            padding: 20px;
             text-decoration: none;
-            border-radius: 10px;
             font-size: 18px;
             font-weight: bold;
-            display: block;
+            overflow-wrap: anywhere;
         }
 
-        .boton:hover {
+        .boton:hover,
+        .boton:focus-visible {
             background-color: #b879b1;
         }
     </style>
 </head>
 
 <body>
+    <main>
+        <h1>Página Principal</h1>
+        <p>Selecciona la guía que deseas consultar</p>
 
-    <h1>Página Principal</h1>
-    <p>Selecciona la guía que deseas consultar</p>
-
-    <h2>Guía 3</h2>
-    <div class="contenedor">
-        <a href="./20255046_Guia3/RecursosGuia3/ejemplo1/index.html" class="boton">Ejemplo 1: Maravillas del Mundo</a>
-        <a href="./20255046_Guia3/RecursosGuia3/ejemplo2/index.html" class="boton">Ejemplo 2: Menú lateral</a>
-        <a href="./20255046_Guia3/RecursosGuia3/ejercicio/ejercicio.html" class="boton">Ejercicio: Resultado 1</a>
-        <a href="./20255046_Guia3/Reto IA/Turismo2.mp4" class="boton">Reto IA: Turismo en El Salvador</a>
-    </div>
+        <h2>Guía 3</h2>
+        <nav class="contenedor" aria-label="Ejemplos de la guía 3">
+            <a href="./recursos/ejemplo1/index.html" class="boton">Ejemplo 1: Maravillas del Mundo</a>
+            <a href="./recursos/ejemplo1/ejemplo2/index.html" class="boton">Ejemplo 2: Menú lateral</a>
+            <a href="./recursos/ejemplo1/ejercicio/ejercicio.html" class="boton">Ejercicio: Resultado 1</a>
+        </nav>
+    </main>
 </body>
 </html>
